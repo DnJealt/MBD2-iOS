@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Pokémon-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MBD2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ListViewController" customModule="MBD2" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +16,130 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nmD-8z-9JR">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" id="2Vm-5e-tZf">
+                                    <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </activityIndicatorView>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PokemonCell" id="2rU-GA-YmL" customClass="PokemonCell" customModule="MBD2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2rU-GA-YmL" id="JGE-QO-PpG">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pokemon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQ7-1J-KHL">
+                                                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="xQ7-1J-KHL" secondAttribute="bottom" id="Ajy-Wb-9qI"/>
+                                                <constraint firstItem="xQ7-1J-KHL" firstAttribute="leading" secondItem="JGE-QO-PpG" secondAttribute="leading" id="Gmn-8j-yKV">
+                                                    <variation key="heightClass=regular-widthClass=compact" constant="20"/>
+                                                </constraint>
+                                                <constraint firstItem="xQ7-1J-KHL" firstAttribute="top" secondItem="JGE-QO-PpG" secondAttribute="top" id="hzE-F8-9ZS"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="xQ7-1J-KHL"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <exclude reference="Ajy-Wb-9qI"/>
+                                                    <exclude reference="Gmn-8j-yKV"/>
+                                                    <exclude reference="hzE-F8-9ZS"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="heightClass=regular-widthClass=compact">
+                                                <mask key="subviews">
+                                                    <include reference="xQ7-1J-KHL"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <include reference="Ajy-Wb-9qI"/>
+                                                    <include reference="Gmn-8j-yKV"/>
+                                                    <include reference="hzE-F8-9ZS"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="xQ7-1J-KHL" id="80O-Q1-i31"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="VXw-ES-0I1"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="4Bv-Sc-qqI"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="nmD-8z-9JR" secondAttribute="trailing" id="JIp-61-mMX">
+                                <variation key="heightClass=regular-widthClass=compact" constant="20"/>
+                            </constraint>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="nmD-8z-9JR" secondAttribute="bottom" id="Sqp-cP-miN">
+                                <variation key="heightClass=regular-widthClass=compact" constant="20"/>
+                            </constraint>
+                            <constraint firstItem="nmD-8z-9JR" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="agX-6C-gmK">
+                                <variation key="heightClass=regular-widthClass=compact" constant="20"/>
+                            </constraint>
+                            <constraint firstItem="nmD-8z-9JR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="flw-c4-mOL">
+                                <variation key="heightClass=regular-widthClass=compact" constant="20"/>
+                            </constraint>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="nmD-8z-9JR"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="JIp-61-mMX"/>
+                                <exclude reference="agX-6C-gmK"/>
+                                <exclude reference="flw-c4-mOL"/>
+                                <exclude reference="Sqp-cP-miN"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="nmD-8z-9JR"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="JIp-61-mMX"/>
+                                <include reference="agX-6C-gmK"/>
+                                <include reference="flw-c4-mOL"/>
+                                <include reference="Sqp-cP-miN"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Pokémon" id="XPc-ID-Y6e"/>
+                    <connections>
+                        <outlet property="PokemonListView" destination="nmD-8z-9JR" id="QLb-T4-Fgi"/>
+                        <outlet property="activityIndicator" destination="2Vm-5e-tZf" id="tlR-as-YLU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="786" y="180"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="kt4-wZ-l21">
+            <objects>
+                <navigationController id="K0o-3e-FOl" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3dB-sI-7sQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="aY7-5Q-LBI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hyA-64-rLX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-88" y="180"/>
         </scene>
     </scenes>
 </document>
