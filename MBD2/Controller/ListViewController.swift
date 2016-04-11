@@ -12,25 +12,61 @@ class ListViewController: BaseViewController, UITableViewDataSource, UITableView
 
     @IBOutlet var PokemonListView: UITableView!
     
-    let dummyArray = ["kaas", "giratina", "Palkia", "Joost"]
+    var pokemonList: [String] = []
+    
+    
+    private func fetchPokemonList(){
+        activityIndicator.startAnimating()
+        
+        RequestHandler.sendGetRequest(
+            "http://pokeapi.co/api/v2/pokedex/1", // Only Kanto for now.
+            result: { (result: PokeListResult) -> Void in
+                self.fillTableView(result.getAllNames())
+
+            }) { (error) -> Void in
+                print("Error: \(error.localizedDescription)")
+                self.activityIndicator.stopAnimating()
+        }
+    }
+    
+    func fillTableView(names: [String]) {
+        // Reduces the loading times by about 95%.
+        dispatch_async(dispatch_get_main_queue(), {
+            self.pokemonList = names
+            self.PokemonListView.reloadData()
+            self.activityIndicator.stopAnimating()
+        })
+    }
+    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("PokemonCell", forIndexPath: indexPath) as! PokemonCell
         
-        let dummyString = dummyArray[indexPath.row]
+        let name = pokemonList[indexPath.row]    
         
-        cell.nameLabel.text = dummyString
+        cell.nameLabel.text = name
+        
+        // Set the tag of the cell, so it can be identified later
+        cell.tag = indexPath.row
         
         return cell;
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dummyArray.count
+        return pokemonList.count
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! PokemonCell
+        print(cell.nameLabel.text)
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        activityIndicator.startAnimating()
+        
+        fetchPokemonList()
         
         // Do any additional setup after loading the view, typically from a nib.
     }
