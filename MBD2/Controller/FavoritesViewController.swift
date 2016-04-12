@@ -39,19 +39,14 @@ class FavoritesViewController: BaseViewController, UITableViewDataSource, UITabl
     }
     
     
-    
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "ToPokemonDetail"){
             let destination = segue.destinationViewController as! PokemonDetailViewController
             let thisPokemon = sender as! String
             
+            destination.fromFavorites = true
             destination.currentPokemon = thisPokemon
         }
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        FavoritesListView.reloadData()
     }
     
     
@@ -62,7 +57,6 @@ class FavoritesViewController: BaseViewController, UITableViewDataSource, UITabl
         let list = utility.getNames("Favorites")
         
         pokemonList = list
-        
     }
     
     override func didReceiveMemoryWarning() {

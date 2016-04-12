@@ -1,29 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BOz-L4-twR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--Pokémon-->
-        <scene sceneID="k9e-re-CZX">
-            <objects>
-                <tabBarController id="BOz-L4-twR" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Pokémon" id="Dmv-G8-S7a"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="JKT-cH-6qf">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="5Wr-ep-aGU" kind="relationship" relationship="viewControllers" id="0ZZ-ej-zV6"/>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="ZsA-dj-HE6"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YAc-1g-Z6K" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-711" y="-498"/>
-        </scene>
         <!--Pokédex-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -98,9 +79,18 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="rTd-by-Fgm"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0R-zJ-JuW">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Favorites"/>
+                                <connections>
+                                    <segue destination="5Wr-ep-aGU" kind="show" id="MqK-Z6-Iih"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="O0R-zJ-JuW" firstAttribute="centerY" secondItem="hnJ-vM-vXQ" secondAttribute="centerY" id="2sd-U8-IaO"/>
+                            <constraint firstAttribute="trailing" secondItem="O0R-zJ-JuW" secondAttribute="trailing" constant="20" id="GuQ-mD-UFl"/>
                             <constraint firstAttribute="trailing" secondItem="nmD-8z-9JR" secondAttribute="trailing" id="JIp-61-mMX">
                                 <variation key="heightClass=regular-widthClass=compact" constant="20"/>
                             </constraint>
@@ -124,17 +114,20 @@
                                 <exclude reference="2Vm-5e-tZf"/>
                                 <exclude reference="hnJ-vM-vXQ"/>
                                 <exclude reference="nmD-8z-9JR"/>
+                                <exclude reference="O0R-zJ-JuW"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Sqp-cP-miN"/>
-                                <exclude reference="dQG-Jn-J9a"/>
-                                <exclude reference="Wxo-Ka-2Kj"/>
-                                <exclude reference="y9D-Hf-D3o"/>
-                                <exclude reference="gIi-Y3-84n"/>
-                                <exclude reference="gzO-BP-ZuH"/>
                                 <exclude reference="JIp-61-mMX"/>
                                 <exclude reference="agX-6C-gmK"/>
                                 <exclude reference="flw-c4-mOL"/>
+                                <exclude reference="gIi-Y3-84n"/>
+                                <exclude reference="gzO-BP-ZuH"/>
+                                <exclude reference="2sd-U8-IaO"/>
+                                <exclude reference="GuQ-mD-UFl"/>
+                                <exclude reference="Wxo-Ka-2Kj"/>
+                                <exclude reference="y9D-Hf-D3o"/>
+                                <exclude reference="Sqp-cP-miN"/>
+                                <exclude reference="dQG-Jn-J9a"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -142,17 +135,20 @@
                                 <include reference="2Vm-5e-tZf"/>
                                 <include reference="hnJ-vM-vXQ"/>
                                 <include reference="nmD-8z-9JR"/>
+                                <include reference="O0R-zJ-JuW"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="Sqp-cP-miN"/>
-                                <include reference="dQG-Jn-J9a"/>
-                                <include reference="Wxo-Ka-2Kj"/>
-                                <include reference="y9D-Hf-D3o"/>
-                                <include reference="gIi-Y3-84n"/>
-                                <include reference="gzO-BP-ZuH"/>
                                 <include reference="JIp-61-mMX"/>
                                 <include reference="agX-6C-gmK"/>
                                 <include reference="flw-c4-mOL"/>
+                                <include reference="gIi-Y3-84n"/>
+                                <include reference="gzO-BP-ZuH"/>
+                                <include reference="2sd-U8-IaO"/>
+                                <include reference="GuQ-mD-UFl"/>
+                                <include reference="Wxo-Ka-2Kj"/>
+                                <include reference="y9D-Hf-D3o"/>
+                                <exclude reference="Sqp-cP-miN"/>
+                                <include reference="dQG-Jn-J9a"/>
                             </mask>
                         </variation>
                     </view>
@@ -166,7 +162,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="297" y="-804"/>
+            <point key="canvasLocation" x="447" y="-943.5"/>
         </scene>
         <!--Pokemon Detail View Controller-->
         <scene sceneID="U7m-7a-Wy5">
@@ -189,19 +185,19 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XPZ-Pd-PW9">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Add To Favorites"/>
-                                <connections>
-                                    <action selector="addToFavorites" destination="MLb-3E-lKk" eventType="touchUpInside" id="6oJ-Cc-Grg"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eVO-1Q-DtX">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="&lt; Back"/>
                                 <connections>
-                                    <segue destination="BOz-L4-twR" kind="show" id="sBm-T9-pHq"/>
+                                    <action selector="backButtonPressed" destination="MLb-3E-lKk" eventType="touchUpInside" id="Azg-ds-Jw8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XPZ-Pd-PW9">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Add To Favorites"/>
+                                <connections>
+                                    <action selector="addToFavorites" destination="MLb-3E-lKk" eventType="touchUpInside" id="6oJ-Cc-Grg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -222,8 +218,8 @@
                             <mask key="subviews">
                                 <exclude reference="b47-xd-VD7"/>
                                 <exclude reference="GVZ-1h-ioh"/>
-                                <exclude reference="XPZ-Pd-PW9"/>
                                 <exclude reference="eVO-1Q-DtX"/>
+                                <exclude reference="XPZ-Pd-PW9"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="Heu-bF-YkJ"/>
@@ -242,8 +238,8 @@
                             <mask key="subviews">
                                 <include reference="b47-xd-VD7"/>
                                 <include reference="GVZ-1h-ioh"/>
-                                <include reference="XPZ-Pd-PW9"/>
                                 <include reference="eVO-1Q-DtX"/>
+                                <include reference="XPZ-Pd-PW9"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="Heu-bF-YkJ"/>
@@ -262,11 +258,14 @@
                     <connections>
                         <outlet property="PokemonLabel" destination="GVZ-1h-ioh" id="R7c-vH-R9s"/>
                         <outlet property="activityIndicator" destination="b47-xd-VD7" id="GiH-4j-MS6"/>
+                        <outlet property="addToFavoritesButton" destination="XPZ-Pd-PW9" id="Di0-WJ-bwp"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="backToPokedex" id="nhP-az-RE4"/>
+                        <segue destination="5Wr-ep-aGU" kind="show" identifier="backToFavorites" id="Q5o-Xw-cub"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="65h-UX-0y4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1150.5" y="-804"/>
+            <point key="canvasLocation" x="1063.5" y="-205.5"/>
         </scene>
         <!--Favorites View Controller-->
         <scene sceneID="NdQ-12-AsN">
@@ -342,9 +341,17 @@
                                     <outlet property="delegate" destination="5Wr-ep-aGU" id="FAL-OB-0hz"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="43l-wS-Z3z">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Pokédex"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="jSy-fk-rzV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="43l-wS-Z3z" firstAttribute="centerY" secondItem="UlI-3M-B6r" secondAttribute="centerY" id="93a-nh-NSm"/>
                             <constraint firstItem="Cae-pm-bY4" firstAttribute="leading" secondItem="lAh-py-2JE" secondAttribute="leading" id="Bdb-UM-xGD">
                                 <variation key="heightClass=regular-widthClass=compact" constant="20"/>
                             </constraint>
@@ -357,6 +364,7 @@
                             </constraint>
                             <constraint firstItem="DA7-j9-5kP" firstAttribute="centerY" secondItem="lAh-py-2JE" secondAttribute="centerY" id="aMl-qI-SxG"/>
                             <constraint firstItem="UlI-3M-B6r" firstAttribute="centerX" secondItem="lAh-py-2JE" secondAttribute="centerX" id="fk0-om-ecu"/>
+                            <constraint firstAttribute="trailing" secondItem="43l-wS-Z3z" secondAttribute="trailing" constant="20" id="nJW-Wb-u6F"/>
                             <constraint firstItem="DA7-j9-5kP" firstAttribute="centerX" secondItem="lAh-py-2JE" secondAttribute="centerX" id="q6o-X6-WKa"/>
                             <constraint firstAttribute="trailing" secondItem="Cae-pm-bY4" secondAttribute="trailing" id="wNf-2j-dyK">
                                 <variation key="heightClass=regular-widthClass=compact" constant="20"/>
@@ -367,16 +375,19 @@
                                 <exclude reference="DA7-j9-5kP"/>
                                 <exclude reference="UlI-3M-B6r"/>
                                 <exclude reference="Cae-pm-bY4"/>
+                                <exclude reference="43l-wS-Z3z"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="XeG-Lw-2Ot"/>
-                                <exclude reference="aMl-qI-SxG"/>
-                                <exclude reference="q6o-X6-WKa"/>
-                                <exclude reference="Lwc-zo-vcU"/>
-                                <exclude reference="fk0-om-ecu"/>
                                 <exclude reference="Bdb-UM-xGD"/>
                                 <exclude reference="SKB-Qk-XHl"/>
                                 <exclude reference="wNf-2j-dyK"/>
+                                <exclude reference="Lwc-zo-vcU"/>
+                                <exclude reference="fk0-om-ecu"/>
+                                <exclude reference="93a-nh-NSm"/>
+                                <exclude reference="nJW-Wb-u6F"/>
+                                <exclude reference="aMl-qI-SxG"/>
+                                <exclude reference="q6o-X6-WKa"/>
+                                <exclude reference="XeG-Lw-2Ot"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -384,16 +395,19 @@
                                 <include reference="DA7-j9-5kP"/>
                                 <include reference="UlI-3M-B6r"/>
                                 <include reference="Cae-pm-bY4"/>
+                                <include reference="43l-wS-Z3z"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="XeG-Lw-2Ot"/>
-                                <include reference="aMl-qI-SxG"/>
-                                <include reference="q6o-X6-WKa"/>
-                                <include reference="Lwc-zo-vcU"/>
-                                <include reference="fk0-om-ecu"/>
                                 <include reference="Bdb-UM-xGD"/>
                                 <include reference="SKB-Qk-XHl"/>
                                 <include reference="wNf-2j-dyK"/>
+                                <include reference="Lwc-zo-vcU"/>
+                                <include reference="fk0-om-ecu"/>
+                                <include reference="93a-nh-NSm"/>
+                                <include reference="nJW-Wb-u6F"/>
+                                <include reference="aMl-qI-SxG"/>
+                                <include reference="q6o-X6-WKa"/>
+                                <include reference="XeG-Lw-2Ot"/>
                             </mask>
                         </variation>
                     </view>
@@ -406,10 +420,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iwx-jl-4gx" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="297" y="-148.5"/>
+            <point key="canvasLocation" x="1665" y="-943.5"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="nhP-az-RE4"/>
         <segue reference="gkq-gx-WhO"/>
+        <segue reference="Q5o-Xw-cub"/>
     </inferredMetricsTieBreakers>
 </document>

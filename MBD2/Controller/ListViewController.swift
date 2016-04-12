@@ -60,8 +60,8 @@ class ListViewController: BaseViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print(pokemonList[indexPath.row])
-        //self.performSegueWithIdentifier("ToPokemonDetail", sender: pokemonList[indexPath.row])
+//        print(pokemonList[indexPath.row])
+        self.performSegueWithIdentifier("ToPokemonDetail", sender: pokemonList[indexPath.row])
     }
     
     
@@ -71,6 +71,7 @@ class ListViewController: BaseViewController, UITableViewDataSource, UITableView
             let destination = segue.destinationViewController as! PokemonDetailViewController
             let thisPokemon = sender as! String
             
+            destination.fromFavorites = false;
             destination.currentPokemon = thisPokemon
         }
     }
@@ -95,9 +96,6 @@ class ListViewController: BaseViewController, UITableViewDataSource, UITableView
         
         PokedexListView.dataSource = self
         PokedexListView.reloadData()
-        
-        print(list)
-        
         
         // Do any additional setup after loading the view, typically from a nib.
     }

@@ -47,5 +47,17 @@ class StorageUtility {
         
     }
     
+    ///Checks if a name is present in a cached String array
+    func containsName(key:String, item:String) -> Bool{
+        
+        let obj = defaults.arrayForKey(key) as? [String]
+        
+        if(obj != nil){
+            if(obj!.contains(item)){
+                return true
+            }
+        }
+        return false
+    }
     
 }
