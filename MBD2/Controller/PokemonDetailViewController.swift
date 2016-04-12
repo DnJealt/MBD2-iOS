@@ -10,14 +10,21 @@ import UIKit
 
 class PokemonDetailViewController: BaseViewController {
     
+    var currentPokemon: String = "null"
+    
+    @IBOutlet var PokemonLabel: UILabel!
     
     
-    
+    @IBAction func addToFavorites() {
+        
+        utility.appendToArray("Favorites", item: currentPokemon)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        PokemonLabel.text = currentPokemon
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

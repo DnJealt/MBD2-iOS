@@ -10,7 +10,7 @@ import UIKit
 
 class ListViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
 
-    @IBOutlet var PokemonListView: UITableView!
+    @IBOutlet var PokedexListView: UITableView!
     
     var pokemonList: [String] = []
     
@@ -19,30 +19,33 @@ class ListViewController: BaseViewController, UITableViewDataSource, UITableView
         activityIndicator.startAnimating()
         
         RequestHandler.sendGetRequest(
-            "http://pokeapi.co/api/v2/pokedex/1", // Only Kanto for now.
+            "http://pokeapi.co/api/v2/pokedex/1",
             result: { (result: PokeListResult) -> Void in
                 self.fillTableView(result.getAllNames())
-
+						
             }) { (error) -> Void in
                 print("Error: \(error.localizedDescription)")
                 self.activityIndicator.stopAnimating()
         }
+        
     }
     
     func fillTableView(names: [String]) {
         // Reduces the loading times by about 95%.
         dispatch_async(dispatch_get_main_queue(), {
             self.pokemonList = names
-            self.PokemonListView.reloadData()
+            self.PokedexListView.reloadData()
             self.activityIndicator.stopAnimating()
         })
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("PokemonCell", forIndexPath: indexPath) as! PokemonCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("PokedexCell", forIndexPath: indexPath) as! PokedexCell
         
-        let name = pokemonList[indexPath.row]    
+        var name = pokemonList[indexPath.row]
+        
+        capitalizeFirstLetter(&name)
         
         cell.nameLabel.text = name
         
@@ -57,16 +60,44 @@ class ListViewController: BaseViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! PokemonCell
-        print(cell.nameLabel.text)
+        print(pokemonList[indexPath.row])
+        //self.performSegueWithIdentifier("ToPokemonDetail", sender: pokemonList[indexPath.row])
     }
     
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "ToPokemonDetail"){
+            let destination = segue.destinationViewController as! PokemonDetailViewController
+            let thisPokemon = sender as! String
+            
+            destination.currentPokemon = thisPokemon
+        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        PokedexListView.reloadData()
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetchPokemonList()
+        // Fetch the cached list, if exists
+        let list = utility.getNames("Pokedex")
+        
+        if(list.isEmpty){
+            fetchPokemonList()
+        }
+        else{
+            pokemonList = list
+        }
+        
+        PokedexListView.dataSource = self
+        PokedexListView.reloadData()
+        
+        print(list)
+        
         
         // Do any additional setup after loading the view, typically from a nib.
     }

@@ -22,15 +22,21 @@ class PokeListResult : Result {
     
     func getAllNames() -> [String] {
         let entries = dict["pokemon_entries"] as! [AnyObject]
+        let utility = StorageUtility()
+        
         var names: [String] = []
         
-        
-        for var a in entries { //stfu swift
+        // Ignore this warning, xcode is a bitch
+        for var a in entries {
             let species = a["pokemon_species"] as! Dictionary<String, String>
             let name: String = species["name"]! as String
             
             names.append(name)
         }
+        
+        // Cache the list, useless to fetch it every time the view loads.
+        print("caching list")
+        utility.storeNames("Pokedex", names: names)
         
         return names
     }

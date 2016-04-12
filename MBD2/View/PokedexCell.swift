@@ -1,5 +1,5 @@
 //
-//  PokemonCell.swift
+//  PokedexCell.swift
 //  MBD2
 //
 //  Created by Jelte van Tartwijk on 08/04/16.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class PokemonCell: UITableViewCell {
+class PokedexCell: UITableViewCell {
     
     @IBOutlet var nameLabel: UILabel!
     

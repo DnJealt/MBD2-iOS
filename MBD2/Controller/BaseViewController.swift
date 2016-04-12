@@ -11,6 +11,19 @@ import UIKit
 class BaseViewController: UIViewController {
     
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    
+    let utility = StorageUtility()
+    
+    
+    ///Some magic spells to make the first letter of a String a capital letter. "You're a wizard, Harry" ~ Hagrid
+    func capitalizeFirstLetter(inout text: String) -> String {
+        let firstLetterOfString = Range(start: text.startIndex,
+            end: text.startIndex.advancedBy(1))
+        text.replaceRange(firstLetterOfString, with: text.substringWithRange(firstLetterOfString).capitalizedString)
+        
+        return text;
+    }    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
